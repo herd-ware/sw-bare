@@ -1,0 +1,11 @@
+*.a
+*.o
+*.elf
+*.hex
+*.list
+
+lib/
+obj/
+elf/
+hex/
+list/

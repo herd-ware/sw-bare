@@ -3,7 +3,7 @@
  * Created Date: 2023-03-31 02:51:10 pm
  * Author: Mathieu Escouteloup
  * -----
- * Last Modified: 2023-03-31 03:05:54 pm
+ * Last Modified: 2023-03-31 05:24:47 pm
  * Modified By: Mathieu Escouteloup
  * -----
  * License: See LICENSE.md
@@ -26,5 +26,10 @@ _start:
   jal bare_init
   call main  
 
-end:
-  j end
+_end_trigger:
+  li x10, 0x1c004000
+  li x11, 31
+  call	x1, gpio_set_bit
+
+_end:
+  j _end

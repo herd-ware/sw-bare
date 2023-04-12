@@ -3,7 +3,7 @@
  * Created Date: 2023-03-31 02:58:56 pm
  * Author: Mathieu Escouteloup
  * -----
- * Last Modified: 2023-03-31 03:00:18 pm
+ * Last Modified: 2023-04-11 10:49:42 am
  * Modified By: Mathieu Escouteloup
  * -----
  * License: See LICENSE.md
@@ -15,7 +15,6 @@
 
 #ifndef MAIN_H 
 #define MAIN_H
-
 
 #include <stdint.h>
 #include "lib-herd.h"

@@ -3,7 +3,7 @@
  * Created Date: 2023-03-31 02:58:56 pm
  * Author: Mathieu Escouteloup
  * -----
- * Last Modified: 2023-04-11 10:49:31 am
+ * Last Modified: 2023-04-17 02:47:56 pm
  * Modified By: Mathieu Escouteloup
  * -----
  * License: See LICENSE.md
@@ -24,6 +24,13 @@ void main() {
 
   uart_send_array(UART0, "\nStart bare-metal software ...\n", 31);
   uart_send_array(UART0, "[OK] Initialization.\n", 21);
+
+  char sconv[30];
+  uint8_t ssize;
+
+  ssize = sprintf(sconv, "[OK] Value: %u\n", 18);
+  uart_send_array(UART0, sconv, ssize);
+
   while(!uart_status_idle(UART0));
 
   //wait_cycle(5000);

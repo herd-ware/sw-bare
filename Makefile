@@ -7,7 +7,7 @@ IS_SIM = true
 CC = ${TOOLCHAIN}-gcc
 AR = ${TOOLCHAIN}-ar
 LD = ${TOOLCHAIN}-ld
-CFLAGS = -O1 -nostdlib -nostartfiles -fstrict-volatile-bitfields -march=rv${XLEN}i
+CFLAGS = -O1 -nostartfiles -fstrict-volatile-bitfields -march=rv${XLEN}i
 CFLAGS += -Woverflow 
 CFLAGS += -DXLEN=${XLEN} -DCONFIG_${CONFIG} -DIS_SIM=${IS_SIM}
 LIB_HERD_PATH = ../lib-herd
@@ -37,7 +37,8 @@ elf: libs
 	${CC} $(CFLAGS) ${INCLUDE} -c src/start.S -o obj/start.o
 	${CC} $(CFLAGS) ${INCLUDE} -c src/main/init.c -o obj/init.o
 	${CC} $(CFLAGS) ${INCLUDE} -c src/main/main.c -o obj/main.o
-	${LD} -T script.ld obj/*.o lib/*.a -o ${PRJ_DIR}/elf/${NAME}.elf
+#	${LD} -static -T script.ld obj/*.o lib/*.a -o ${PRJ_DIR}/elf/${NAME}.elf
+	${CC} $(CFLAGS) ${INCLUDE} -T script.ld obj/*.o lib/*.a -o ${PRJ_DIR}/elf/${NAME}.elf
 
 list: elf
 	${TOOLCHAIN}-objdump -D ${PRJ_DIR}/elf/${NAME}.elf -M numeric > ${PRJ_DIR}/list/${NAME}.list
